@@ -72,7 +72,7 @@ UserSchema.methods.generateAuthToken= async function(){
 
 //Find user
 UserSchema.statics.findByCredentials= async (email,password)=>{
-    const user= await UserSchema.findOne({email});
+    const user= await User.findOne({email});
     if (!user) throw new Error('Error');
     const passwordMatch= await bcrypt.compare(password, user.password);
     if (!passwordMatch) throw new Error('Error');
